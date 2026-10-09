@@ -1046,6 +1046,8 @@ body { margin: 0; background: var(--ws-blanc); }
 .hub-messages .hub-tip--time { border-color: var(--ws-violet); border-top: 4px solid var(--ws-violet); }
 /* Vitrine */
 .hub-showcase { margin-top: var(--space-4); }
+.hub-agenthub { margin: var(--space-4) 0 var(--space-6); }
+.hub-agenthub .hub-agent__note { margin-top: var(--space-3); border-top: 0; padding-top: 0; }
 .hub-agent__note { font-family: var(--font-mono); font-size: 11.5px; color: var(--ws-gris); border-top: 1px dashed var(--ws-ligne); padding-top: 8px; margin-top: 4px; }
 .ws-showcase--list .hub-agent__note { flex: 1 1 100%; }
 .hub-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-top: var(--space-5); }
@@ -2058,6 +2060,11 @@ html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + var(--bar-h, 98p
 window.WS_I18N = {
   en: {
  "__title": "Wavestone TIME AI Maker Initiative",
+ "Initiative Wavestone": "Wavestone initiative",
+ "L’AI Agent Hub, initiative Wavestone, recense tous les agents réalisés par le cabinet, au même endroit. Avant de parcourir les agents de la practice TIME ci-dessous, regarde si celui qu’il te faut existe déjà.": "The AI Agent Hub, a Wavestone initiative, lists all the agents the firm has built, in one place. Before browsing the TIME practice agents below, check whether the one you need already exists.",
+ "Catalogue des agents": "Agent catalog",
+ "Ouvrir l’AI Agent Hub": "Open the AI Agent Hub",
+ "Application Power Apps : connexion avec ton compte Wavestone requise.": "Power Apps application: signing in with your Wavestone account is required.",
  "Créer un skill": "Create a skill",
  "Chapitre 1 · Skill": "Chapter 1 · Skill",
  "Un skill qui génère <span class=\"ws-ac\">des pages HTML</span>": "A skill that generates <span class=\"ws-ac\">HTML pages</span>",
@@ -4892,6 +4899,11 @@ window.WS_I18N = {
 },
   de: {
  "__title": "Wavestone TIME AI Maker Initiative",
+ "Initiative Wavestone": "Wavestone-Initiative",
+ "L’AI Agent Hub, initiative Wavestone, recense tous les agents réalisés par le cabinet, au même endroit. Avant de parcourir les agents de la practice TIME ci-dessous, regarde si celui qu’il te faut existe déjà.": "Der AI Agent Hub, eine Wavestone-Initiative, erfasst alle von der Firma entwickelten Agenten an einem Ort. Bevor du die TIME-Agenten unten durchsuchst, prüfe, ob der gesuchte schon existiert.",
+ "Catalogue des agents": "Agentenkatalog",
+ "Ouvrir l’AI Agent Hub": "AI Agent Hub öffnen",
+ "Application Power Apps : connexion avec ton compte Wavestone requise.": "Power-Apps-Anwendung: Anmeldung mit deinem Wavestone-Konto erforderlich.",
  "Créer un skill": "Einen Skill erstellen",
  "Chapitre 1 · Skill": "Kapitel 1 · Skill",
  "Un skill qui génère <span class=\"ws-ac\">des pages HTML</span>": "Ein Skill, der <span class=\"ws-ac\">HTML-Seiten</span> erzeugt",
@@ -9080,6 +9092,13 @@ window.WS_SHOTS = {
   ];
   var PITCH = 'Nom de l’idée :\nL’irritant — ce qui prend du temps ou se fait mal aujourd’hui :\nL’utilisateur — qui, dans quelle situation, sur quel écran :\nLes données disponibles — lesquelles, d’où, sont-elles sensibles :\nLe livrable attendu — ce que l’outil produit concrètement :\nPourquoi un agent, et pas un script ou un tableur :\nSecteur / offre concernés :\nQui porte l’idée (et qui pourrait la construire) :';
 
+  /** Mise en avant de l'AI Agent Hub (initiative Wavestone qui recense les agents du cabinet), juste avant les filtres de la vitrine. */
+  var URL_AI_AGENT_HUB = "https://apps.powerapps.com/play/e/354cd52c-2eec-e54f-8fba-ea71adab87fb/a/ec9affdc-2ed5-4b65-a389-c97b5ed3bd58?tenantId=5de96c96-c87c-4dce-aad9-f5c557b52ac1";
+  function agentHub() {
+    var card = W.Card({ featured: true, wide: true, href: URL_AI_AGENT_HUB, external: true, icon: 'compass', tag: t("Initiative Wavestone"), title: 'AI Agent Hub', text: t("L’AI Agent Hub, initiative Wavestone, recense tous les agents réalisés par le cabinet, au même endroit. Avant de parcourir les agents de la practice TIME ci-dessous, regarde si celui qu’il te faut existe déjà."), chips: ['Power Apps', "Catalogue des agents"].map(t), cta: t("Ouvrir l’AI Agent Hub") }).replace('<a class="', '<a target="_blank" rel="noopener noreferrer" class="');
+    return '<div class="hub-agenthub"><div class="ws-cards">' + card + '</div><p class="hub-agent__note">' + W.icon('lock') + ' ' + esc(t("Application Power Apps : connexion avec ton compte Wavestone requise.")) + '</p></div>';
+  }
+
   function agentCard(a) {
     var html = W.AgentCard({ name: t(a.name), type: a.type, typeLabel: t(a.typeLabel || TYPE_LABELS[a.type]), usage: a.usage, usageLabel: t(USAGE_LABELS[a.usage]), secteur: a.secteur, secteurLabel: t(a.secteurLabel || SECTEUR_LABELS[a.secteur]), statut: a.statut, statutLabel: t(a.statutLabel || STATUT_LABELS[a.statut]), text: t(a.text), chips: a.chips.map(t), owner: t(a.owner), links: a.demo ? { demo: a.demo } : {} });
     if (a.note) html = html.replace('</article>', '<p class="hub-agent__note">' + W.icon('lock') + ' ' + esc(t(a.note)) + '</p></article>');
@@ -9115,7 +9134,7 @@ window.WS_SHOTS = {
       { key: 'statut', label: t('Statut'), options: ['disponible', 'en-construction', 'a-confirmer', 'idee'].map(function (k) { return { value: k, label: t(STATUT_LABELS[k]) }; }) }
     ] });
     var vitrine = sec({ id: 'vitrine', alt: true, eyebrow: 'La vitrine', title: 'Les agents et applications de la practice', sub: "Cinq cartes issues du kick-off, toutes « À confirmer », et une démo interne disponible : aucune démo ni dépôt n’est inventé, les liens affichent « — » tant qu’ils n’existent pas. Les cas clients sont anonymisés, leur diffusion reste soumise à accord." },
-      tools + '<div class="hub-showcase"><div class="ws-showcase" id="hub-showcase">' + each(AGENTS, agentCard) + '</div><p class="ws-empty" data-ws-empty-auto></p></div>'  +
+      agentHub() + tools + '<div class="hub-showcase"><div class="ws-showcase" id="hub-showcase">' + each(AGENTS, agentCard) + '</div><p class="ws-empty" data-ws-empty-auto></p></div>'  +
       '<p class="hub-small hub-muted" style="margin-top:var(--space-4)">' + esc(t('Pour ajouter ou corriger une carte : envoie le nom, le type, l’owner et deux lignes dans le canal Teams de la communauté.')) + ' ' + W.Badge({ kind: 'a-confirmer', label: t('Owners à renseigner') }) + '</p>');
 
     return bar('nos-agents') + '<main id="hub-main" class="hub-main">' + hero + crumb([{ label: 'Accueil', href: '#/accueil' }, { label: 'Nos agents' }]) + vitrine + next(['atelier', 'comprendre', 'gouvernance']) + '</main>' + footer();
