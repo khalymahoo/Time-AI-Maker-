@@ -1699,7 +1699,7 @@ html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + var(--bar-h, 98p
       '<p class="ws-agent__owner">' + esc(L('owner')) + ' <b>' + esc(p.owner || L('tbd')) + '</b></p>' +
       '<p class="ws-agent__text">' + esc(p.text || '') + '</p>' +
       (p.chips && p.chips.length ? '<div class="ws-chips">' + each(p.chips, function (c) { return Chip({ label: c }); }) + '</div>' : '') +
-      '<div class="ws-links">' + LinkButton({ label: L('demo'), href: links.demo, icon: 'play', primary: !!links.demo }) + LinkButton({ label: L('repo'), href: links.repo, icon: 'git-branch', external: !!links.repo }) + LinkButton({ label: L('deck'), href: links.deck, icon: 'file' }) + '</div>' +
+      '<div class="ws-links">' + LinkButton({ label: L('demo'), href: links.demo, icon: 'play', primary: !!links.demo, external: !!links.demo }) + LinkButton({ label: L('repo'), href: links.repo, icon: 'git-branch', external: !!links.repo }) + LinkButton({ label: L('deck'), href: links.deck, icon: 'file' }) + '</div>' +
       '<div class="ws-agent__meta">' + Chip({ label: p.secteurLabel || p.secteur || L('transverse'), tone: 'tech' }) + (p.usageLabel ? Chip({ label: p.usageLabel }) : '') + '</div>' +
       '</article>';
   }
@@ -2058,6 +2058,15 @@ html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + var(--bar-h, 98p
 window.WS_I18N = {
   en: {
  "__title": "Wavestone TIME AI Maker Initiative",
+ "Un agent IA pour aiguiller les opérateurs de centrale nucléaire. Il interroge en langage naturel la base de retour d’expérience, compare un incident en cours avec l’historique, puis génère un résumé d’incident ou des règles automatiques.": "An AI agent to guide operators in nuclear power plants. It queries the operating-experience database in natural language, compares an ongoing incident with the history, then generates an incident summary or automatic rules.",
+ "Langage naturel": "Natural language",
+ "Retour d’expérience": "Operating experience",
+ "Analyse d’incident": "Incident analysis",
+ "Aide à la décision": "Decision support",
+ "PoC": "PoC",
+ "Démo vidéo sur le SharePoint interne : accès Wavestone requis.": "Demo video on the internal SharePoint: Wavestone access required.",
+ "Nuclear Safety Agent": "Nuclear Safety Agent",
+ "Marin Tulard": "Marin Tulard",
  "La page de connexion GitHub, avec le bouton « Continue with Google » entouré en rouge": "The GitHub sign-in page, with the “Continue with Google” button circled in red",
  "Connexion avec Google : le compte choisi, puis Continue": "Signing in with Google: the chosen account, then Continue",
  "L’écran « Sign in with Google » : le compte Google sélectionné et le bouton Continue": "The “Sign in with Google” screen: the selected Google account and the Continue button",
@@ -3916,7 +3925,7 @@ window.WS_I18N = {
  "Les ingénieurs ne sont pas les experts métier ; externaliser rompt la boucle d’amélioration.": "Engineers aren’t the subject-matter experts; outsourcing breaks the improvement loop.",
  "Les applications et agents de la practice — et <span class=\"ws-ac\">vos idées</span>": "The practice’s applications and agents — and <span class=\"ws-ac\">your ideas</span>",
  "Ici, « agent » couvre aussi bien de petites apps HTML que des agents Copilot Studio ou des applications Power Apps : chaque carte dit lequel. Les cartes initiales viennent du kick-off et restent à confirmer.": "Here, “agent” covers small HTML apps as well as Copilot Studio agents or Power Apps applications: each card says which. The initial cards come from the kick-off and are still to be confirmed.",
- "5 cartes · à confirmer": "5 cards · to be confirmed",
+ "6 cartes · 5 à confirmer": "6 cards · 5 to be confirmed",
  "Filtres combinables": "Combinable filters",
  "Appel à idées": "Call for ideas",
  "Les applications et agents déjà construits ou en construction dans la practice, et l’endroit où proposer les tiens.": "The applications and agents already built or under construction in the practice, and the place to suggest yours.",
@@ -3987,7 +3996,7 @@ window.WS_I18N = {
  "Owners à renseigner": "Owners to be filled in",
  "La vitrine": "The showcase",
  "Les agents et applications de la practice": "The practice’s agents and applications",
- "Cinq cartes issues du kick-off, toutes « À confirmer » : aucune démo ni dépôt n’est inventé, les liens affichent « — » tant qu’ils n’existent pas. Les cas clients sont anonymisés, leur diffusion reste soumise à accord.": "Five cards from the kick-off, all “To be confirmed”: no demo or repository has been invented, and links show “—” until they exist. Client cases are anonymized, and sharing them remains subject to approval.",
+ "Cinq cartes issues du kick-off, toutes « À confirmer », et une démo interne disponible : aucune démo ni dépôt n’est inventé, les liens affichent « — » tant qu’ils n’existent pas. Les cas clients sont anonymisés, leur diffusion reste soumise à accord.": "Five cards from the kick-off, all “To be confirmed”, and one available internal demo: no demo or repository has been invented, and links show “—” until they exist. Client cases are anonymized, and sharing them remains subject to approval.",
  "Tu bosses dans la supply, l’énergie, le transport ? Donne-nous des idées.": "Working in supply chain, energy, transport? Give us ideas.",
  "Les bonnes demandes d’agent viennent du terrain : un irritant précis, un utilisateur nommé, des données qu’on sait où trouver. Pas besoin de savoir coder pour proposer.": "Good agent requests come from the field: a specific pain point, a named user, data you know where to find. You don’t need to know how to code to suggest one.",
  "Remplis le gabarit ci-contre, colle-le dans le canal Teams de la communauté : l’initiative qualifie l’idée avec toi, puis cherche qui peut la construire — toi, avec l’Atelier, ou un maker de la practice.": "Fill in the template alongside and paste it into the community’s Teams channel: the initiative qualifies the idea with you, then looks for who can build it — you, with the workshop, or a maker from the practice.",
@@ -4831,6 +4840,15 @@ window.WS_I18N = {
 },
   de: {
  "__title": "Wavestone TIME AI Maker Initiative",
+ "Un agent IA pour aiguiller les opérateurs de centrale nucléaire. Il interroge en langage naturel la base de retour d’expérience, compare un incident en cours avec l’historique, puis génère un résumé d’incident ou des règles automatiques.": "Ein KI-Agent zur Unterstützung der Bediener in Kernkraftwerken. Er befragt die Erfahrungsdatenbank in natürlicher Sprache, vergleicht einen laufenden Vorfall mit der Historie und erzeugt anschließend eine Vorfallzusammenfassung oder automatische Regeln.",
+ "Langage naturel": "Natürliche Sprache",
+ "Retour d’expérience": "Betriebserfahrung",
+ "Analyse d’incident": "Vorfallanalyse",
+ "Aide à la décision": "Entscheidungsunterstützung",
+ "PoC": "PoC",
+ "Démo vidéo sur le SharePoint interne : accès Wavestone requis.": "Demo-Video im internen SharePoint: Wavestone-Zugang erforderlich.",
+ "Nuclear Safety Agent": "Nuclear Safety Agent",
+ "Marin Tulard": "Marin Tulard",
  "La page de connexion GitHub, avec le bouton « Continue with Google » entouré en rouge": "Die GitHub-Anmeldeseite, mit rot umkreistem Button „Continue with Google“",
  "Connexion avec Google : le compte choisi, puis Continue": "Anmeldung mit Google: das gewählte Konto, dann Continue",
  "L’écran « Sign in with Google » : le compte Google sélectionné et le bouton Continue": "Der Bildschirm „Sign in with Google“: das ausgewählte Google-Konto und der Button Continue",
@@ -6689,7 +6707,7 @@ window.WS_I18N = {
  "Les ingénieurs ne sont pas les experts métier ; externaliser rompt la boucle d’amélioration.": "Ingenieure sind nicht die Fachexperten; Auslagern unterbricht die Verbesserungsschleife.",
  "Les applications et agents de la practice — et <span class=\"ws-ac\">vos idées</span>": "Die Anwendungen und Agenten der Practice — und <span class=\"ws-ac\">eure Ideen</span>",
  "Ici, « agent » couvre aussi bien de petites apps HTML que des agents Copilot Studio ou des applications Power Apps : chaque carte dit lequel. Les cartes initiales viennent du kick-off et restent à confirmer.": "Hier umfasst „Agent“ sowohl kleine HTML-Apps als auch Copilot-Studio-Agenten oder Power-Apps-Anwendungen: Jede Karte gibt an, worum es sich handelt. Die ersten Karten stammen aus dem Kick-off und sind noch zu bestätigen.",
- "5 cartes · à confirmer": "5 Karten · zu bestätigen",
+ "6 cartes · 5 à confirmer": "6 Karten · 5 zu bestätigen",
  "Filtres combinables": "Kombinierbare Filter",
  "Appel à idées": "Ideenaufruf",
  "Les applications et agents déjà construits ou en construction dans la practice, et l’endroit où proposer les tiens.": "Die Anwendungen und Agenten der Practice, die bereits gebaut oder im Aufbau sind, und der Ort, an dem du deine vorschlagen kannst.",
@@ -6760,7 +6778,7 @@ window.WS_I18N = {
  "Owners à renseigner": "Owner noch einzutragen",
  "La vitrine": "Der Showcase",
  "Les agents et applications de la practice": "Die Agenten und Anwendungen der Practice",
- "Cinq cartes issues du kick-off, toutes « À confirmer » : aucune démo ni dépôt n’est inventé, les liens affichent « — » tant qu’ils n’existent pas. Les cas clients sont anonymisés, leur diffusion reste soumise à accord.": "Fünf Karten aus dem Kick-off, alle „Zu bestätigen“: Es wurde weder eine Demo noch ein Repository erfunden, und Links zeigen „—“, solange es sie nicht gibt. Die Kundenfälle sind anonymisiert, ihre Weitergabe bleibt freigabepflichtig.",
+ "Cinq cartes issues du kick-off, toutes « À confirmer », et une démo interne disponible : aucune démo ni dépôt n’est inventé, les liens affichent « — » tant qu’ils n’existent pas. Les cas clients sont anonymisés, leur diffusion reste soumise à accord.": "Fünf Karten aus dem Kick-off, alle „Zu bestätigen“, und eine verfügbare interne Demo: Es wurde weder eine Demo noch ein Repository erfunden, und Links zeigen „—“, solange es sie nicht gibt. Die Kundenfälle sind anonymisiert, ihre Weitergabe bleibt freigabepflichtig.",
  "Tu bosses dans la supply, l’énergie, le transport ? Donne-nous des idées.": "Du bist in Supply Chain, Energie, Transport unterwegs? Gib uns Ideen.",
  "Les bonnes demandes d’agent viennent du terrain : un irritant précis, un utilisateur nommé, des données qu’on sait où trouver. Pas besoin de savoir coder pour proposer.": "Gute Agenten-Anfragen kommen aus der Praxis: ein konkretes Ärgernis, ein benannter Nutzer, Daten, von denen man weiß, wo sie zu finden sind. Um etwas vorzuschlagen, musst du nicht programmieren können.",
  "Remplis le gabarit ci-contre, colle-le dans le canal Teams de la communauté : l’initiative qualifie l’idée avec toi, puis cherche qui peut la construire — toi, avec l’Atelier, ou un maker de la practice.": "Füll die nebenstehende Vorlage aus und füg sie in den Teams-Kanal der Community ein: Die Initiative qualifiziert die Idee gemeinsam mit dir und sucht dann, wer sie bauen kann — du, mit dem Workshop, oder ein Maker aus der Practice.",
@@ -8928,12 +8946,14 @@ window.WS_SHOTS = {
     { name: 'Démonstrateurs « AI for Ops »', type: 'a-preciser', typeLabel: 'Démonstrateurs — type à préciser', usage: 'mission', secteur: 'industrie manufacturing', secteurLabel: 'Industrie · Manufacturing', statut: 'a-confirmer', text: 'Des démonstrateurs qui montrent comment des agents transforment les métiers des opérations industrielles — maintenance en premier lieu — pour pitcher auprès des clients.', chips: ['Maintenance', 'Opérations industrielles', 'Démonstrateur', 'Pitch client'], owner: '[Stream Expertise — à renseigner]' },
     { name: 'Agents propale & quotidien du consultant', type: 'a-preciser', typeLabel: 'Type à préciser', usage: 'consultant', secteur: 'transverse', statut: 'idee', statutLabel: 'Idée — à confirmer', text: 'Le point de départ voulu par la sponsor : des agents qui aident à la propale et aux tâches quotidiennes du consultant, avant d’aller chercher des agents sectoriels.', chips: ['Propale', 'Relecture', 'Mise en forme', 'Quotidien'], owner: '[à renseigner]' },
     { name: 'Analyse d’impact de changement (grand programme SAP d’un industriel)', type: 'copilot-studio', usage: 'mission', secteur: 'industrie', statut: 'a-confirmer', text: 'Un agent qui analyse chaque demande de changement et en quantifie l’impact (architecture, données…) dans le cadre d’un déploiement SAP d’envergure. Développé à la demande du client pendant la mission ; la suite se vend.', chips: ['Change request', 'Impact architecture', 'Impact données', 'Copilot Studio'], owner: '[à renseigner]', client: true },
-    { name: 'Plan de conduite du changement', type: 'power-apps', typeLabel: 'Power Apps (avec de petits agents)', usage: 'mission', secteur: 'industrie', statut: 'a-confirmer', text: 'Une application qui note l’impact d’un changement à partir des ateliers menés et génère un plan de conduite du changement.', chips: ['Ateliers', 'Notation d’impact', 'Plan de changement', 'Power Apps'], owner: '[à renseigner]', client: true }
+    { name: 'Plan de conduite du changement', type: 'power-apps', typeLabel: 'Power Apps (avec de petits agents)', usage: 'mission', secteur: 'industrie', statut: 'a-confirmer', text: 'Une application qui note l’impact d’un changement à partir des ateliers menés et génère un plan de conduite du changement.', chips: ['Ateliers', 'Notation d’impact', 'Plan de changement', 'Power Apps'], owner: '[à renseigner]', client: true },
+    { name: "Nuclear Safety Agent", type: 'copilot-studio', usage: 'mission', secteur: 'energie', statut: 'disponible', text: "Un agent IA pour aiguiller les opérateurs de centrale nucléaire. Il interroge en langage naturel la base de retour d’expérience, compare un incident en cours avec l’historique, puis génère un résumé d’incident ou des règles automatiques.", chips: ["Langage naturel","Retour d’expérience","Analyse d’incident","Aide à la décision","PoC"], owner: "Marin Tulard", demo: "https://digiplace.sharepoint.com/sites/WIC-AIANDDATA/_layouts/15/stream.aspx?id=%2Fsites%2FWIC%2DAIANDDATA%2FShared%20Documents%2F3%2E04%20BU%20%2D%20Transport%2C%20Infrastructure%2C%20Manufacturing%20%26%20Energy%2FTraining%2F08%2E%20D%C3%A9mos%20%26%20REX%2FInternal%20projects%20demos%2FAgent%5FNuclear%2FPoC%20Nuclear%20Safety%20Agent%20V2%2Emp4", note: "Démo vidéo sur le SharePoint interne : accès Wavestone requis." }
   ];
   var PITCH = 'Nom de l’idée :\nL’irritant — ce qui prend du temps ou se fait mal aujourd’hui :\nL’utilisateur — qui, dans quelle situation, sur quel écran :\nLes données disponibles — lesquelles, d’où, sont-elles sensibles :\nLe livrable attendu — ce que l’outil produit concrètement :\nPourquoi un agent, et pas un script ou un tableur :\nSecteur / offre concernés :\nQui porte l’idée (et qui pourrait la construire) :';
 
   function agentCard(a) {
-    var html = W.AgentCard({ name: t(a.name), type: a.type, typeLabel: t(a.typeLabel || TYPE_LABELS[a.type]), usage: a.usage, usageLabel: t(USAGE_LABELS[a.usage]), secteur: a.secteur, secteurLabel: t(a.secteurLabel || SECTEUR_LABELS[a.secteur]), statut: a.statut, statutLabel: t(a.statutLabel || STATUT_LABELS[a.statut]), text: t(a.text), chips: a.chips.map(t), owner: t(a.owner), links: {} });
+    var html = W.AgentCard({ name: t(a.name), type: a.type, typeLabel: t(a.typeLabel || TYPE_LABELS[a.type]), usage: a.usage, usageLabel: t(USAGE_LABELS[a.usage]), secteur: a.secteur, secteurLabel: t(a.secteurLabel || SECTEUR_LABELS[a.secteur]), statut: a.statut, statutLabel: t(a.statutLabel || STATUT_LABELS[a.statut]), text: t(a.text), chips: a.chips.map(t), owner: t(a.owner), links: a.demo ? { demo: a.demo } : {} });
+    if (a.note) html = html.replace('</article>', '<p class="hub-agent__note">' + W.icon('lock') + ' ' + esc(t(a.note)) + '</p></article>');
     if (a.client) html = html.replace('</article>', '<p class="hub-agent__note">' + W.icon('lock') + ' ' + esc(t('Cas client — anonymisé, diffusion soumise à accord.')) + '</p></article>');
     return html;
   }
@@ -8957,7 +8977,7 @@ window.WS_SHOTS = {
   }
 
   function pageNosAgents() {
-    var hero = W.Hero({ variant: 'compact', eyebrow: t('Showcase'), titleHtml: t('Nos <span class="ws-ac">agents</span> TIME'), lede: t('Ici, « agent » couvre aussi bien de petites apps HTML que des agents Copilot Studio ou des applications Power Apps : chaque carte dit lequel. Les cartes initiales viennent du kick-off et restent à confirmer.'), chips: ['5 cartes · à confirmer', 'Filtres combinables'].map(t) });
+    var hero = W.Hero({ variant: 'compact', eyebrow: t('Showcase'), titleHtml: t('Nos <span class="ws-ac">agents</span> TIME'), lede: t('Ici, « agent » couvre aussi bien de petites apps HTML que des agents Copilot Studio ou des applications Power Apps : chaque carte dit lequel. Les cartes initiales viennent du kick-off et restent à confirmer.'), chips: ["6 cartes · 5 à confirmer", 'Filtres combinables'].map(t) });
 
     var tools = W.Filters({ target: '#hub-showcase', searchLabel: t('Rechercher un agent'), placeholder: t('Rechercher un agent, une capacité…'), groups: [
       { key: 'type', label: t('Type'), options: [{ value: 'app-html', label: t('App HTML') }, { value: 'app-html-ia', label: t('App HTML + IA') }, { value: 'copilot-studio', label: t('Agent Copilot Studio') }, { value: 'power-apps', label: t('Power Apps') }, { value: 'a-preciser', label: t('À préciser') }] },
@@ -8965,7 +8985,7 @@ window.WS_SHOTS = {
       { key: 'secteur', label: t('Secteur'), options: ['transport', 'industrie', 'manufacturing', 'energie', 'utilities', 'transverse'].map(function (k) { return { value: k, label: t(SECTEUR_LABELS[k]) }; }) },
       { key: 'statut', label: t('Statut'), options: ['disponible', 'en-construction', 'a-confirmer', 'idee'].map(function (k) { return { value: k, label: t(STATUT_LABELS[k]) }; }) }
     ] });
-    var vitrine = sec({ id: 'vitrine', alt: true, eyebrow: 'La vitrine', title: 'Les agents et applications de la practice', sub: 'Cinq cartes issues du kick-off, toutes « À confirmer » : aucune démo ni dépôt n’est inventé, les liens affichent « — » tant qu’ils n’existent pas. Les cas clients sont anonymisés, leur diffusion reste soumise à accord.' },
+    var vitrine = sec({ id: 'vitrine', alt: true, eyebrow: 'La vitrine', title: 'Les agents et applications de la practice', sub: "Cinq cartes issues du kick-off, toutes « À confirmer », et une démo interne disponible : aucune démo ni dépôt n’est inventé, les liens affichent « — » tant qu’ils n’existent pas. Les cas clients sont anonymisés, leur diffusion reste soumise à accord." },
       tools + '<div class="hub-showcase"><div class="ws-showcase" id="hub-showcase">' + each(AGENTS, agentCard) + '</div><p class="ws-empty" data-ws-empty-auto></p></div>'  +
       '<p class="hub-small hub-muted" style="margin-top:var(--space-4)">' + esc(t('Pour ajouter ou corriger une carte : envoie le nom, le type, l’owner et deux lignes dans le canal Teams de la communauté.')) + ' ' + W.Badge({ kind: 'a-confirmer', label: t('Owners à renseigner') }) + '</p>');
 
